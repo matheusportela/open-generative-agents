@@ -1,5 +1,5 @@
 from engine.game_engine import GameEngine
-from engine.agent_manager import AgentManager
+from engine.world import World
 
 
 def test_game_engine_is_running_after_start():
@@ -15,7 +15,7 @@ def test_game_engine_is_not_running_after_stop():
     assert engine._is_running == False
 
 
-def test_game_engine_initialize_agent_manager():
-    agent_manager = AgentManager()
-    engine = GameEngine(agent_manager=agent_manager)
-    assert engine._agent_manager == agent_manager
+def test_game_engine_initialize_world():
+    world = World()
+    engine = GameEngine(world=world)
+    assert engine._world == world

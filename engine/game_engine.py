@@ -2,15 +2,15 @@ import logging
 
 from typeguard import typechecked
 
-from .agent_manager import AgentManager
+from .world import World
 
 
 class GameEngine:
     @typechecked
-    def __init__(self, agent_manager: AgentManager = AgentManager()) -> None:
+    def __init__(self, world: World = World()) -> None:
         self._logger = logging.getLogger(__name__)
         self._is_running = False
-        self._agent_manager = agent_manager
+        self._world = world
 
     # Execute the main loop of the game. It will gracefully exit with CTRL+C.
     @typechecked
@@ -35,7 +35,7 @@ class GameEngine:
     @typechecked
     def _execute_step(self) -> None:
         self._logger.debug("Executing game step")
-        self._agent_manager.execute_step()
+        self._world.update()
 
     @typechecked
     def _stop_game(self) -> None:

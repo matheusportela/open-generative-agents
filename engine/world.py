@@ -6,7 +6,7 @@ from typeguard import typechecked
 from engine.agent import Agent
 
 
-class AgentManager:
+class World:
     @typechecked
     def __init__(self) -> None:
         self._logger = logging.getLogger(__name__)
@@ -17,5 +17,5 @@ class AgentManager:
         self.agents.append(agent)
 
     @typechecked
-    def execute_step(self) -> None:
-        self._logger.debug("Executing agent manager step")
+    def update(self) -> None:
+        self._logger.debug("Updating world")
