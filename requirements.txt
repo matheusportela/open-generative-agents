@@ -4,4 +4,5 @@ mypy-extensions==1.0.0
 packaging==23.1
 pluggy==1.0.0
 pytest==7.3.1
+typeguard==3.0.2
 typing_extensions==4.5.0
