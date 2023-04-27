@@ -17,5 +17,6 @@ python generative_agents.py
 
 ## Test
 ```bash
+mypy engine
 pytest
 ```

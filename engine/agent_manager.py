@@ -1,3 +1,5 @@
+from typing import List
+
 from typeguard import typechecked
 
 from engine.agent import Agent
@@ -6,7 +8,7 @@ from engine.agent import Agent
 class AgentManager:
     @typechecked
     def __init__(self) -> None:
-        self.agents = []
+        self.agents: List[Agent] = []
 
     @typechecked
     def add_agent(self, agent: Agent) -> None:
