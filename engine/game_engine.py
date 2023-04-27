@@ -35,6 +35,7 @@ class GameEngine:
     @typechecked
     def _execute_step(self) -> None:
         self._logger.debug("Executing game step")
+        self._agent_manager.execute_step()
 
     @typechecked
     def _stop_game(self) -> None:
