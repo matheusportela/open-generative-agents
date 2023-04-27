@@ -2,6 +2,7 @@ import logging
 
 from typeguard import typechecked
 
+
 class GameEngine:
     @typechecked
     def __init__(self) -> None:
