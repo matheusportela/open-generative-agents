@@ -1,5 +1,7 @@
 import logging
 
+from engine.agent import Agent
+from engine.world import World
 from engine.game_engine import GameEngine
 
 
@@ -10,5 +12,8 @@ logging.basicConfig(
 )
 
 if __name__ == "__main__":
-    engine = GameEngine()
+    world = World()
+    world.add_agent(Agent(name='Anna'))
+
+    engine = GameEngine(world=world)
     engine.run()
