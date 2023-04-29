@@ -19,3 +19,6 @@ class World:
     @typechecked
     def update(self) -> None:
         self._logger.debug("Updating world")
+
+        for agent in self.agents:
+            agent.update()
