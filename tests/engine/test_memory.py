@@ -2,7 +2,7 @@ from datetime import datetime
 
 import typeguard
 
-from engine.memory import MemoryObjectType, MemoryObject
+from engine.memory import MemoryObjectType, MemoryObject, MemoryStream
 
 
 def test_memory_object_stores_type_observation():
@@ -71,3 +71,44 @@ def test_memory_object_created_at_and_accessed_at_are_initialized_equal():
         description='A red apple'
     )
     assert memory_object.created_at == memory_object.accessed_at
+
+
+def test_memory_object_updates_accessed_at():
+    memory_object = MemoryObject(
+        type=MemoryObjectType.OBSERVATION,
+        description='A red apple'
+    )
+    memory_object.access()
+    assert memory_object.created_at < memory_object.accessed_at
+
+
+def test_memory_stream_stores_memory_object():
+    memory_object = MemoryObject(
+        type=MemoryObjectType.OBSERVATION,
+        description='A red apple'
+    )
+    memory_stream = MemoryStream()
+    memory_stream.store(memory_object)
+    assert memory_stream._memory_objects == [memory_object]
+
+
+def test_memory_stream_retrieves_memory_objects():
+    memory_object = MemoryObject(
+        type=MemoryObjectType.OBSERVATION,
+        description='A red apple'
+    )
+    memory_stream = MemoryStream()
+    memory_stream.store(memory_object)
+    assert memory_stream.retrieve() == [memory_object]
+
+
+def test_memory_stream_updates_accessed_at_of_retrieved_memory_objects():
+    memory_object = MemoryObject(
+        type=MemoryObjectType.OBSERVATION,
+        description='A red apple'
+    )
+    memory_stream = MemoryStream()
+    memory_stream.store(memory_object)
+    memory_objects = memory_stream.retrieve()
+    for memory_object in memory_objects:
+        assert memory_object.created_at != memory_object.accessed_at
