@@ -1,5 +1,5 @@
 from engine.agent import Agent
-from engine.perception import Perception
+from engine.memory import MemoryObject
 
 
 def test_agent_has_name():
@@ -10,4 +10,4 @@ def test_agent_has_name():
 def test_agent_can_perceive():
     agent = Agent(name='Anna')
     perception = agent.perceive()
-    assert type(perception) is Perception
+    assert type(perception) is MemoryObject

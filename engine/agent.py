@@ -2,7 +2,7 @@ import logging
 
 from typeguard import typechecked
 
-from engine.perception import Perception
+from engine.memory import MemoryObject, MemoryObjectType
 
 
 class Agent:
@@ -18,6 +18,6 @@ class Agent:
     # Agent can perceive the world and update its memory stream with the
     # acquired information.
     @typechecked
-    def perceive(self) -> Perception:
+    def perceive(self) -> MemoryObject:
         self._logger.debug(f"Perceiving with agent {self.name}")
-        return Perception()
+        return MemoryObject(type=MemoryObjectType.OBSERVATION, description="I see a tree")
