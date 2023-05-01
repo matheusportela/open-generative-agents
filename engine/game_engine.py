@@ -6,15 +6,16 @@ from .world import World
 
 
 class GameEngine:
+    '''Engine for the game, containing the main loop.'''
     @typechecked
     def __init__(self, world: World = World()) -> None:
         self._logger = logging.getLogger(__name__)
         self._is_running = False
         self._world = world
 
-    # Execute the main loop of the game. It will gracefully exit with CTRL+C.
     @typechecked
     def run(self) -> None:
+        '''Execute the main loop of the game. It will gracefully exit with CTRL+C.'''
         self._start_game()
 
         try:
