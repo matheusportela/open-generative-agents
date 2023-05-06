@@ -3,14 +3,16 @@ import logging
 from typeguard import typechecked
 
 from .world import World
+from .large_language_model import LargeLanguageModel, EchoLLM
 
 
 class GameEngine:
     '''Engine for the game, containing the main loop.'''
     @typechecked
-    def __init__(self, world: World = World()) -> None:
+    def __init__(self, llm: LargeLanguageModel = EchoLLM(), world: World = World()) -> None:
         self._logger = logging.getLogger(__name__)
         self._is_running = False
+        self._llm = llm
         self._world = world
 
     @typechecked

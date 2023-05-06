@@ -12,6 +12,7 @@ pip install -r requirements.txt
 
 ### Installing LLM
 You can use [llama.cpp](https://github.com/ggerganov/llama.cpp) with [OpenLLaMA](https://github.com/openlm-research/open_llama) weights.
+We also use [llama-cpp-python](https://abetlen.github.io/llama-cpp-python) as a wrapper for llama.cpp.
 
 ```bash
 # Install prerequisites
@@ -22,7 +23,7 @@ git clone https://github.com/ggerganov/llama.cpp && cd llama.cpp && cmake -B bui
 virtualenv venv_llama && source venv_llama/bin/activate
 python -m pip install -r requirements.txt
 
-# Download OpenLLaMA weights
+# Download and quantize OpenLLaMA weights
 cd models && git clone https://huggingface.co/openlm-research/open_llama_7b_preview_300bt/ && cd ..
 python convert-pth-to-ggml.py models/open_llama_7b_preview_300bt/open_llama_7b_preview_300bt_transformers_weights 1
 ./build/bin/quantize models/open_llama_7b_preview_300bt/open_llama_7b_preview_300bt_transformers_weights/ggml-model-f16.bin models/open_llama_7b_preview_300bt_q5_0.ggml q5_0
